@@ -14,7 +14,7 @@ cursors = connect.cursor()
 
 def clean():
 
-    os.system('clear || cls')
+    os.system('clear')
 
 clean()
 
