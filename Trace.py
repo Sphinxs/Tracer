@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+__author__ = 'Sphinxs'
+
+
 import sqlite3
 
 import sys
