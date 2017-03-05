@@ -60,7 +60,7 @@ while True:
 
         if valor == '1':
 
-            pass
+            continue
 
         else:
 
