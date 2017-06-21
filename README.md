@@ -5,7 +5,7 @@ Esse é apenas um pequeno teste, o conceito inicial é de criar uma aplicação 
 
 ## Requisitos
 
-	Python 3 ( > )
+	Python 3
 
 ### Construção
 
