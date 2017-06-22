@@ -30,10 +30,6 @@ class Db ( object ) :
 
             raise ( 'Nenhuma tabela foi criada ou os parâmetros contém erros - {0}'.foramt ( Er ) )
 
-        else :
-
-            print ( 'A tabela {0} foi criada'.format ( args[0] ) )
-
     def insert ( self, * args ) :
 
         ''' Args = 'Name-Table', ( 'Field1', 'Field2' ), ( 'Value-Field1', 02 ) '''
