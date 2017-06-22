@@ -1,5 +1,5 @@
 
-# Traces
+# Tracer
 
 Conceito inicial de criar uma aplicação crud completa com gui ( [Tk Inter](https://docs.python.org/3/library/tk.html) ) :zap:
 
@@ -19,3 +19,5 @@ Conceito inicial de criar uma aplicação crud completa com gui ( [Tk Inter](htt
 #### Alternativas
 
 [Py My Sql](https://github.com/PyMySQL/PyMySQL)
+
+[Psycopg 2](https://wiki.postgresql.org/wiki/Psycopg2_Tutorial)
