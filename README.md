@@ -1,16 +1,15 @@
 
 # Traces
 
-Esse é apenas um pequeno teste, o conceito inicial é de criar uma aplicação crud completa com gui.
+Conceito inicial de criar uma aplicação crud completa com gui ( [Tk Inter](https://docs.python.org/3/library/tk.html) ) :zap:
 
-## Requisitos
+#### Requisitos
 
-	Python 3
+[Python 3](https://www.python.org/download/releases/3.0/)
 
-### Construção
+[Sq Lite](https://www.sqlite.org/)
 
-	Sqlite Browser
 
-	Sqlite 3
+#### Import
 
-	Pep 8
+[External classes in Python](https://stackoverflow.com/questions/598668/external-classes-in-python)
