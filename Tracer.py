@@ -29,7 +29,10 @@ class Db ( object ) :
         except sqlite3.Error as Er :
 
             raise ( 'Nenhuma tabela foi criada ou os parâmetros contém erros - {0}'.foramt ( Er ) )
+        else :
 
+            print ( 'A tabela {0} foi criada'.format ( args[0] ) )
+            
     def insert ( self, * args ) :
 
         ''' Args = 'Name-Table', ( 'Field1', 'Field2' ), ( 'Value-Field1', 02 ) '''
@@ -46,4 +49,4 @@ class Db ( object ) :
 
         for row in self.cur.execute ( '''select * from {0}'''.format ( tbl ) ) :
 
-            print ( '{0}'.format ( row.join ( ' - ' ) )
+            print ( '{0}'.format ( row ) )
