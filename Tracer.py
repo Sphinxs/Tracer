@@ -52,7 +52,7 @@ class Db ( object ) :
 
         else :
 
-            print ( 'Informações adicionadas com sucesso'.format ( args[0] ) )
+            print ( 'Informações adicionadas com sucesso' )
 
 
     def show ( self, tbl = None ) :
