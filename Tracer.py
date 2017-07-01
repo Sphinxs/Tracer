@@ -1,25 +1,26 @@
 
 # -*- coding: utf-8 -*-
 
-import sqlite3 as sl
+import sqlite3 as lite
 
 
 class Db ( object ) :
 
     ''' Crud - Create, Read, Update & Delete '''
 
+
     def __init__ ( self, name = 'Default.db' ) :
 
         self.__name = name
 
-        self.__con = sl.connect ( str ( self.__name ) )
+        self.__con = lite.connect ( str ( self.__name ) )
 
         self.__cur = self.__con.cursor ()
 
 
     def table ( self, * args ) :
 
-        ''' Args = 'Itens', ( 'Field1 text, Field2 integer' ) '''
+        ''' * Args = 'Table-Name', ( 'Field1 text, Field2 integer, Field3 real ... ' ) '''
 
         try :
 
@@ -27,18 +28,18 @@ class Db ( object ) :
 
             self.__con.commit ()
 
-        except sl.Error as Ert :
+        except lite.Error as Ert :
 
-            raise ( 'Nenhuma tabela foi criada, os parâmetros podem conter erros - {0}'.foramt ( Ert ) )
+            raise Exception ( Ert + '\t - Check the parameters' )
 
         else :
 
-            print ( 'A tabela {0} foi criada'.format ( args[0] ) )
+            print ( '{0} Was created'.format ( args[0] ) )
 
 
     def insert ( self, * args ) :
 
-        ''' Args = 'Name-Table', ( 'Field1', 'Field2' ), ( 'Value-Field1', 02 ) '''
+        ''' * Args = 'Table-Name', ( 'Field1', 'Field2', 'Field3' ), ( 'Value-01', 02, 0.3 ) '''
 
         try :
 
@@ -46,42 +47,42 @@ class Db ( object ) :
 
             self.__con.commit ()
 
-        except sl.Error as Eri :
+        except lite.Error as Eri :
 
-            raise ( 'Nenhum item foi adicionado, os parâmetros podem conter erros - {0}'.foramt ( Eri ) )
+            raise Exception ( Eri + '\t - Check the parameters' )
 
         else :
 
-            print ( 'Informações adicionadas com sucesso' )
+            print ( 'Was adds in - {0}'.format ( args[0] ) )
 
 
     def show ( self, tbl = None ) :
 
-        ''' Tbl = 'Name-Table' '''
+        ''' Tbl = 'Table-Name' '''
 
         try :
 
-            for row in self.__cur.execute ( '''select * from {0}'''.format ( tbl ) ) :
+            for row in self.__cur.execute ( '''select * from {0}'''.format ( str ( tbl ) ) ) :
 
-                for col in row :
+                print ( '\n' )
 
-                    print ( '{0}'.format ( col ) ),
+                print ( ' '.join ( '{} '.format ( c ) for i, c in enumerate ( row, 1 ) ) )
 
-        except sl.Error as Ers :
+        except lite.Error as Ers :
 
-            raise ( 'Nenhuma tabela foi encontrada, os parâmetros podem conter erros - {0}'.format ( Ers ) )
+            raise Exception ( Ers + '\t - Check the parameter' )
 
 
     def select ( self, tbl = None, cmp = None, fld = None ) :
 
-        ''' Tbl = 'Name-Table', Cmp = Field, Fld = Value '''
+        ''' Tbl = 'Table-Name', Cmp = Field, Fld = Value '''
 
         try :
 
-            self.__query = self.__cur.execute ( '''select * from {0} where {1} = \'{2}\' '''.format ( tbl, cmp, str ( fld ) ) )
+            self.__query = self.__cur.execute ( '''select * from {0} where {1} = \'{2}\''''.format ( str ( tbl ), str ( cmp ), str ( fld ) ) )
 
-            print ( '{0}'.format ( self.__query.fetchone () ) )
+            print ( ' '.join ( '{} '.format( c ) for i, c in enumerate ( self.__query.fetchone () ) ) )
 
-        except sl.Error as Qry :
+        except lite.Error as Erq :
 
-            print ( 'Erro, os parâmetros podem conter erros - {0}'.format ( Qry ) )
+            raise Exception ( Erq + '\t - Check the parameters' )
