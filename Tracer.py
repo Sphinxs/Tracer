@@ -10,11 +10,11 @@ class Db ( object ) :
 
     def __init__ ( self, name = 'Default.db' ) :
 
-        self.name = name
+        self.__name = name
 
-        self.con = sl.connect ( str ( self.name ) )
+        self.__con = sl.connect ( str ( self.__name ) )
 
-        self.cur = self.con.cursor ()
+        self.__cur = self.__con.cursor ()
 
 
     def table ( self, * args ) :
@@ -23,11 +23,11 @@ class Db ( object ) :
 
         try :
 
-            self.cur.execute ( '''create table if not exists {0} ({1})'''.format ( args[0], args[1] ) )
+            self.__cur.execute ( '''create table if not exists {0} ({1})'''.format ( args[0], args[1] ) )
 
-            self.con.commit ()
+            self.__con.commit ()
 
-        except sqlite3.Error as Ert :
+        except sl.Error as Ert :
 
             raise ( 'Nenhuma tabela foi criada, os parâmetros podem conter erros - {0}'.foramt ( Ert ) )
 
@@ -42,11 +42,11 @@ class Db ( object ) :
 
         try :
 
-            self.cur.execute ( '''insert into {0} {1} values {2}'''.format ( args[0], args[1], args[2] ) )
+            self.__cur.execute ( '''insert into {0} {1} values {2}'''.format ( args[0], args[1], args[2] ) )
 
-            self.con.commit ()
+            self.__con.commit ()
 
-        except sqlite3.Error as Eri :
+        except sl.Error as Eri :
 
             raise ( 'Nenhum item foi adicionado, os parâmetros podem conter erros - {0}'.foramt ( Eri ) )
 
@@ -57,16 +57,31 @@ class Db ( object ) :
 
     def show ( self, tbl = None ) :
 
-        ''' Tbl = 'Example' '''
+        ''' Tbl = 'Name-Table' '''
 
         try :
 
-            self.cur.execute ( '''select * from {0}'''.format ( tbl ) )
+            for row in self.__cur.execute ( '''select * from {0}'''.format ( tbl ) ) :
 
-            for row in self.cur.execute ( '''select * from {0}'''.format ( tbl ) ) :
+                for col in row :
 
-                print ( '{0}'.format ( row ) )
+                    print ( '{0}'.format ( col ) ),
 
-        except sqlite3.Error as Ers :
+        except sl.Error as Ers :
 
             raise ( 'Nenhuma tabela foi encontrada, os parâmetros podem conter erros - {0}'.format ( Ers ) )
+
+
+    def select ( self, tbl = None, cmp = None, fld = None ) :
+
+        ''' Tbl = 'Name-Table', Cmp = Field, Fld = Value '''
+
+        try :
+
+            self.__query = self.__cur.execute ( '''select * from {0} where {1} = \'{2}\' '''.format ( tbl, cmp, str ( fld ) ) )
+
+            print ( '{0}'.format ( self.__query.fetchone () ) )
+
+        except sl.Error as Qry :
+
+            print ( 'Erro, os parâmetros podem conter erros - {0}'.format ( Qry ) )
