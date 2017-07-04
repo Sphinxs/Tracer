@@ -68,6 +68,10 @@ class Db ( object ) :
 
                 print ( ' '.join ( '{} '.format ( c ) for i, c in enumerate ( row, 1 ) ) )
 
+            else :
+
+                print ( '\n' )
+            
         except lite.Error as Ers :
 
             raise Exception ( Ers + '\t - Check the parameter' )
