@@ -33,7 +33,6 @@ class Db ( object ) :
             raise Exception ( Ert + '\t - Check the parameters' )
 
         else :
-
             print ( '{0} Was created'.format ( args[0] ) )
 
 
@@ -52,7 +51,6 @@ class Db ( object ) :
             raise Exception ( Eri + '\t - Check the parameters' )
 
         else :
-
             print ( 'Was adds in - {0}'.format ( args[0] ) )
 
 
@@ -69,13 +67,11 @@ class Db ( object ) :
                 print ( ' '.join ( '{} '.format ( c ) for i, c in enumerate ( row, 1 ) ) )
 
             else :
-
                 print ( '\n' )
-            
+
         except lite.Error as Ers :
 
             raise Exception ( Ers + '\t - Check the parameter' )
-
 
     def select ( self, tbl = None, cmp = None, fld = None ) :
 
