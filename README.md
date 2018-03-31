@@ -1,4 +1,4 @@
 
 #### Tracer
 
-Crud application with with Python and Sql Lite :zap:
+Crud in Python with and Sql Lite :zap:
